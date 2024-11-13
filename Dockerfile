@@ -20,6 +20,10 @@ RUN echo "ServerSignature Off" >> /etc/apache2/conf-available/security.conf && \
 RUN chown -R www-data:www-data /var/www/bookstack && \
     chmod -R 755 /var/www/bookstack
 
+# Agregar volúmenes para persistencia de datos
+VOLUME /var/www/bookstack/public/uploads
+VOLUME /var/www/bookstack/storage/uploads
+
 # Exponer los puertos que se utilizan en el contenedor
 EXPOSE 80 8080
 
