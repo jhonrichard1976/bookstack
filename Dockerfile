@@ -1,7 +1,7 @@
 # Dockerfile personalizado para BookStack en OpenShift
 
-# Utiliza la imagen base proporcionada desde Quay
-FROM minsal-registry-quay-quay-registry.apps.acm.minsal.cl/quayadmin/bookstack:24.10
+# Utiliza la imagen base desde Docker Hub
+FROM docker.io/rychy499/bookstack:latest
 
 # Establecer variables de entorno necesarias para el despliegue
 ENV APP_URL=https://bookstack-bookstack-pre.apps.prod.minsal.cl \
