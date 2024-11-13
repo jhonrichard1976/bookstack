@@ -16,6 +16,11 @@ RUN echo "ServerSignature Off" >> /etc/apache2/conf-available/security.conf && \
     echo "ServerTokens Prod" >> /etc/apache2/conf-available/security.conf && \
     a2enconf security
 
+    # Configurar los cifradores fuertes para SSL/TLS en Apache
+RUN echo "SSLCipherSuite HIGH:!aNULL:!MD5:!3DES" >> /etc/apache2/mods-available/ssl.conf && \
+    echo "SSLProtocol all -SSLv2 -SSLv3" >> /etc/apache2/mods-available/ssl.conf && \
+    echo "SSLHonorCipherOrder on" >> /etc/apache2/mods-available/ssl.conf
+
 # Configurar PHP para no exponer la versión
 RUN echo "expose_php = Off" > /usr/local/etc/php/conf.d/security.ini
 
