@@ -21,6 +21,9 @@ RUN echo "SSLCipherSuite HIGH:!aNULL:!MD5:!3DES" >> /etc/apache2/mods-available/
     echo "SSLProtocol all -SSLv2 -SSLv3" >> /etc/apache2/mods-available/ssl.conf && \
     echo "SSLHonorCipherOrder on" >> /etc/apache2/mods-available/ssl.conf
 
+# Deshabilitar el método TRACE en Apache
+RUN echo "TraceEnable off" >> /etc/apache2/apache2.conf
+
 # Configurar PHP para no exponer la versión
 RUN echo "expose_php = Off" > /usr/local/etc/php/conf.d/security.ini
 
