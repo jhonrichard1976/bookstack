@@ -35,12 +35,11 @@ RUN apt-get update && apt-get install -y apache2 && \
    # Habilitar HTTP Strict Transport Security (HSTS)
 RUN echo 'Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"' >> /etc/apache2/apache2.conf 
 
-# Habilitar mod_rewrite y permitir .htaccess
-RUN a2enmod rewrite && \
-    echo '<Directory /var/www/bookstack>' >> /etc/apache2/apache2.conf && \
-    echo '    AllowOverride All' >> /etc/apache2/apache2.conf && \
-    echo '</Directory>' >> /etc/apache2/apache2.conf
-
+# Denegar acceso a web.config de manera global
+RUN echo '<Files "web.config">' >> /etc/apache2/apache2.conf && \
+    echo '    Require all denied' >> /etc/apache2/apache2.conf && \
+    echo '</Files>' >> /etc/apache2/apache2.conf
+    
 # Configurar los permisos para que Apache pueda escribir en los directorios necesarios
 RUN chown -R www-data:www-data /var/www/bookstack && \
     chmod -R 755 /var/www/bookstack
