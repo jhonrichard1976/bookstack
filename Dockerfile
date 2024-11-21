@@ -4,7 +4,7 @@
 FROM docker.io/rychy499/bookstack:latest
 
 # Establecer variables de entorno necesarias para el despliegue
-ENV APP_URL=https://bookstack-bookstack-pre.apps.prod.minsal.cl \
+ENV APP_URL=https://bookstack.minsal.cl \
     DB_HOST=mysql \
     DB_DATABASE=bookstack \
     DB_USERNAME=bookstack \
